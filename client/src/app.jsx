@@ -69,7 +69,7 @@ class MainComponent extends React.Component {
         this.state = {
             step : 1,
             name: "",
-            email: "",
+            mail: "",
             pass: "",
             line1: "",
             line2: "",
@@ -85,8 +85,15 @@ class MainComponent extends React.Component {
     }
     click(event){
         event.preventDefault();
+        var field = document.getElementsByTagName('input');
+        for(let i = 0; i < field.length; i++){
+            var txt = field[i].id;
+            this.setState({[txt]: field[i].value})
+        }
+        console.log(this.state)
         this.setState({step : this.state.step + 1})
     }
+
 
    render(){
         if(this.state.step === 1){
